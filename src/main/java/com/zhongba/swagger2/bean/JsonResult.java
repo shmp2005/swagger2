@@ -20,6 +20,20 @@ public class JsonResult {
         this.result = result;
     }
 
+    public static JsonResult ok(Object object){
+        JsonResult result = new JsonResult();
+        result.setStatus("ok");
+        result.setResult(object);
+        return result;
+    }
+
+    public static JsonResult error(Object object){
+        JsonResult result = new JsonResult();
+        result.setStatus("error");
+        result.setResult(object);
+        return result;
+    }
+
     @Override
     public String toString() {
         return "JsonResult{" +

@@ -26,14 +26,13 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
     @GetMapping(value = "user/{id}")
     public ResponseEntity<JsonResult> getUserById(@PathVariable(value = "id") Integer id) {
-        JsonResult r = new JsonResult();
+        JsonResult r;
         try {
             User user = users.get(id);
-            r.setResult(user);
-            r.setStatus("ok");
+            r = JsonResult.ok(user);
+
         } catch (Exception e) {
-            r.setResult(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
+            r = JsonResult.error(e.getClass().getName() + ":" + e.getMessage());
             e.printStackTrace();
         }
         return ResponseEntity.ok(r);
@@ -50,11 +49,9 @@ public class UserController {
         JsonResult r = new JsonResult();
         try {
             List<User> userList = new ArrayList<User>(users.values());
-            r.setResult(userList);
-            r.setStatus("ok");
+            r = JsonResult.ok(userList);
         } catch (Exception e) {
-            r.setResult(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
+            r = JsonResult.error(e.getClass().getName() + ":" + e.getMessage());
             e.printStackTrace();
         }
         return ResponseEntity.ok(r);
@@ -73,11 +70,9 @@ public class UserController {
         JsonResult r = new JsonResult();
         try {
             users.put(user.getId(), user);
-            r.setResult(user.getId());
-            r.setStatus("ok");
+            r = JsonResult.ok(user.getId());
         } catch (Exception e) {
-            r.setResult(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
+            r = JsonResult.error(e.getClass().getName() + ":" + e.getMessage());
 
             e.printStackTrace();
         }
@@ -97,11 +92,9 @@ public class UserController {
         JsonResult r = new JsonResult();
         try {
             users.remove(id);
-            r.setResult(id);
-            r.setStatus("ok");
+            r = JsonResult.ok(id);
         } catch (Exception e) {
-            r.setResult(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
+            r = JsonResult.error(e.getClass().getName() + ":" + e.getMessage());
 
             e.printStackTrace();
         }
@@ -127,11 +120,9 @@ public class UserController {
             u.setUsername(user.getUsername());
             u.setAge(user.getAge());
             users.put(id, u);
-            r.setResult(u);
-            r.setStatus("ok");
+            r = JsonResult.ok(u);
         } catch (Exception e) {
-            r.setResult(e.getClass().getName() + ":" + e.getMessage());
-            r.setStatus("error");
+            r = JsonResult.error(e.getClass().getName() + ":" + e.getMessage());
 
             e.printStackTrace();
         }
