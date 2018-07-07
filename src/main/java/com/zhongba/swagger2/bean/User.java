@@ -40,6 +40,9 @@ public class User {
         this.ctm = ctm;
     }
 
+    public User() {
+    }
+
     public User(int id, String username, int age, Date ctm) {
         this.id = id;
         this.username = username;

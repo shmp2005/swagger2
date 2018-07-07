@@ -17,7 +17,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.zhongba"))
+                .apis(RequestHandlerSelectors.basePackage("com.zhongba.swagger2"))
                 .paths(PathSelectors.any())
                 .build();
 
@@ -26,8 +26,8 @@ public class Swagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring boot利用Swagger构建api文档")
-                .description("简单优雅的restfun风格，http://blog.csdn.net/saytime")
-                .termsOfServiceUrl("http://blog.csdn.net/saytime")
+                .description("简单优雅的restfun风格，https://github.com/shmp2005/swagger2")
+                .termsOfServiceUrl("https://github.com/shmp2005/swagger2")
                 .version("1.0")
                 .build();
     }
